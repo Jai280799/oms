@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration scan="true">
+
+    <include optional="true" resource="logback-override.xml"/>
+
+    <jmxConfiguration/>
+
+    <property scope="context" name="sourceAppId" value="oms"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS Z} [%thread] [%-5level] %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ASYNC_STDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="ASYNC_STDOUT"/>
+    </root>
+
+
+</configuration>
